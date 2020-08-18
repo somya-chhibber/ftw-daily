@@ -16,6 +16,8 @@ const transactionLineItems = require('./api/transaction-line-items');
 const initiatePrivileged = require('./api/initiate-privileged');
 const transitionPrivileged = require('./api/transition-privileged');
 
+const { authenticateFacebook, authenticateFacebookCallback } = require('./api/auth/facebook');
+
 const router = express.Router();
 
 // ================ API router middleware: ================ //
@@ -49,5 +51,8 @@ router.get('/login-as', loginAs);
 router.post('/transaction-line-items', transactionLineItems);
 router.post('/initiate-privileged', initiatePrivileged);
 router.post('/transition-privileged', transitionPrivileged);
+
+router.get('/auth/facebook', authenticateFacebook);
+router.get('/auth/facebook/callback', authenticateFacebookCallback);
 
 module.exports = router;
